@@ -1,0 +1,106 @@
+#pragma encryption
+'!TITLE "EasyTool Function"
+
+'RC8 EasyTool Function Source Code---------------------------------------------
+' @file    EasyTool.pcs
+' @brief   Easy Tool Function RC8 operation only.
+' @details https://github.com/DENSO-2DLab/RC8_Function-EasyTool
+
+' @version 1.0.0
+' @date    2018/12/11
+' @author  Carlos A. Lopez (DPAM - R&D)
+
+' Software License Agreement (MIT License)
+
+' @copyright Copyright (c) 2018 DENSO 2DLab
+
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+
+' The above copyright notice and this permission notice shall be included in
+' all copies or substantial portions of the Software.
+
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+' THE SOFTWARE.
+'------------------------------------------------------------------------------
+
+'GETING STARTED-----------------------------------------------------------------
+' Make sure to go over the setup guide in the following document prior to running
+' this program.
+
+' @doc	EasyTool_Users_Guide.pdf
+
+'Inputs:
+' - Tool_P1 -> Tool Posture Position 1
+' - Tool_P2 -> Tool Posture Position 2
+' - Tool_P3 -> Tool Posture Position 3
+' - Tool_P4 -> Tool Posture Position 4
+
+'Outputs:
+'- ToolDef   -> Tool Offset Definition Parameters.
+'--------------------------------------------------------------------------------
+
+Function EasyTool(Tool_P1 As Position, Tool_P2 As Position, Tool_P3 As Position,_
+				  Tool_P4 As Position) As Position
+
+	'Local Variables
+	Dim TPose_1 As Variant
+	Dim TPose_2 As Variant
+	Dim TPose_3 As Variant
+	Dim TPose_4 As Variant
+
+	'Reformat Variables---
+	TPose_1 = Array(PosX(Tool_P1), PosY(Tool_P1), PosZ(Tool_P1),_
+				    PosRX(Tool_P1), PosRy(Tool_P1), PosRz(Tool_P1),_
+				    Fig(Tool_P1))
+
+	TPose_2 = Array(PosX(Tool_P2), PosY(Tool_P2), PosZ(Tool_P2),_
+				    PosRX(Tool_P2), PosRy(Tool_P2), PosRz(Tool_P2),_
+				    Fig(Tool_P2))
+
+	TPose_3 = Array(PosX(Tool_P3), PosY(Tool_P3), PosZ(Tool_P3),_
+				    PosRX(Tool_P3), PosRy(Tool_P3), PosRz(Tool_P3),_
+				    Fig(Tool_P3))
+
+	TPose_4 = Array(PosX(Tool_P4), PosY(Tool_P4), PosZ(Tool_P4),_
+				    PosRX(Tool_P4), PosRy(Tool_P4), PosRz(Tool_P4),_
+				    Fig(Tool_P4))
+
+
+	'Execute Internal ORiN Function (Service Level)---
+	#Pragma encrypt(On)
+DAGEnDKuVthZuMqJrGa8RigRc5AJw36b6SulTcKl
+1/z7Kh/ZrQtbf8ztPdeuYzmpM0jHyhTuD7POTVLA
+v0omiJ3roT9iRPUXfpRbkwG1yxNfakimPcuW8UXm
+IaU/vqXfcVGG9+1iau4NEWSvPKiEuzth+wb2EMWA
+FUANjXyAh+fEfFAk8mgtm8OTYePrpuPMdb7DWfuP
+2z8hVIWFXVuey9E4MHsgs9rgiXrOboOmFO8g8xPA
+lpwwuWgH0SNJUKVuTvKH0sHRPYiozM2TFy25uRihf6F9Z5HONREc582wzIWLypDRoshpfsXhJRynjYOzkWw+w7jNkxKrAjPRvsA=
+IDAJ986OXyJy/FFQo13zPQ8NyqLX6yixxFcO9J0JktRr
+lmlHgTmdCJQtEqSCq2lSaIdOCB2qvkTPrpXQhb2X
+7QX1EAR0SBhDfFlY1ahNnnt+zlIqZEthZQ0/rHSc
++IP8oZ4y0BNKVLZW3cLW5iiZ0n1Vjhn3DN+nEm7DG8PlXIrvgbz7iYNXLhKzA2uo2sG+k1xaRRkXyNbp8iRWyeVaWwXRpUCrTun3VKO1XmO8X+wxotakJw33WOgu
+xiDUoEJWp9+5uCbidJJEeFDk5XXO387sY9hDUs/d
+pdThQkCvkF9Dk5pOD/aM1qMkhEsy7UFibtfh7oeb
+iZLLRyXGSZ01ER2RT3N4xS0fvY4eC6yROrJRCc3qCpmJiXU=
+KpNbIyY7ZalD11fCPA0bPjpD8RcBaRNbEOW5bsUepoRcNs/o/Q==
+Miu5QLLRXbNwnAd7PtPOKOD+cU6McEMiBIdIXuBS
+	#Pragma encrypt(Off)
+
+	If caoResult(0) = True Then
+		Dim toolDef As Variant
+		toolDef = caoResult(1)
+		EasyTool = P(toolDef(0), toolDef(1), toolDef(2), toolDef(3), toolDef(4), toolDef(5))
+	Else
+		EasyTool = P(0,0,0,0,0,0,-1)
+	End If
+End Function

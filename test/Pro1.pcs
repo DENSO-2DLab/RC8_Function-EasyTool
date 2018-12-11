@@ -1,0 +1,22 @@
+'!TITLE "Generate Tool Offset"
+#Include "EasyTool.pcs"
+
+Sub Main
+	Dim Point1 As Position
+	Dim Point2 As Position
+	Dim Point3 As Position
+	Dim Point4 As Position
+	Dim newTool As Position
+
+	TakeArm
+	
+	Tool 3, P(0,0,0,0,0,0)
+	
+	Point1 = (406.83, -208.25, 556, 180, 0, -170.5, 5)				' Tool Posture 1
+	Point2 = (442.21, -208.25, 566.62, 176.73, -18.8, -169.96, 5)	' Tool Posture 2
+	Point3 = (398.98, -291.32, 485.87, 113.38, 10.53, 179.52, 5)	' Tool Posture 3
+	Point4 = (352.34, -188.61, 495.91, -109.72, -7.41, -121.93, 5)	' Tool Posture 4
+	
+	newTool = EasyTool(Point1, Point2, Point3, Point4)	' Generate New Tool Coordinate	
+	Tool 3, newTool										' Set New Work as Tool 3
+End Sub
