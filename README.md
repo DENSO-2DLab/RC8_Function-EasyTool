@@ -31,17 +31,4 @@ Version 1.0 (12/11/2018)
 
 - This function will calculate a tool offset based on four points (which have the physical tool in different orientation but share the same point of rotation)
 
----
-
----
-
-## _The following is not for Github-2DLab Use (Only DPAM-Bitbucket Repos)_
-
-### DPAM Drive Location
-
-\\\DSCADATA1\Departments\Robotics\Engineering\Employee Folders\Carlos\Product Development\RC8 Function - EasyTool
-
----
-
-
 
